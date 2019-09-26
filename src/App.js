@@ -10,7 +10,11 @@ function App() {
     <div className="App">
       <switch>
         <Route exact path="/" component={MovieFeed}/>
-        <Route path="/:id" component={MovieDetail}/>
+        <Route path="/titles/:id" component={props =>{
+          return(
+            <MovieDetail {...props}/>
+          )
+        }}/>
       </switch>
     </div>
   );

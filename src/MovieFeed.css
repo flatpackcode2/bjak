@@ -8,10 +8,31 @@ body{
     justify-content: center;
 }
 .parent{
+    width:100vw;
     display:flex;
-    flex-direction:"flex-row";
-    justify-content:"space-between";
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    overflow-x:auto;
     overflow:scroll;
+}
+
+.card {
+    flex: 0 0 auto !important;
+    margin: 10px;
+    width:300px;
+  }
+
+.card-body{
+    padding: 0px 0px 0px;
+}
+
+
+.card-img-top{
+    width:600px;
+    margin:0px 0px 0px;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(153,153,161,0.09427521008403361) 45%, rgba(2,0,36,1) 100%);    height:450px;
+    object-fit:contain;
 }
 
 .imageContainer{
@@ -20,3 +41,16 @@ body{
     display:flex;
     align-items:center;
 }
+.row{
+    height:100%;
+}
+
+.container{
+    height:100vh;
+    overflow-y:scroll;
+}
+
+.category-heading{
+    font-family:'Orbitron', sans-serif !important;
+}
+
