@@ -1,0 +1,22 @@
+body{
+    background:linear-gradient(to right, maroon, red);
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+}
+.super{
+    display:flex;
+    justify-content: center;
+}
+.parent{
+    display:flex;
+    flex-direction:"flex-row";
+    justify-content:"space-between";
+    overflow:scroll;
+}
+
+.imageContainer{
+    background:black;
+    height:300px;
+    display:flex;
+    align-items:center;
+}
