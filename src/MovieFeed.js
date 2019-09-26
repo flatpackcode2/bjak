@@ -32,26 +32,26 @@ class MovieFeed extends React.Component {
                 console.log(manualCuration)
                 this.setState({ feed: manualCuration })
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error)
             })
         window.addEventListener('scroll', this.handleScroll)
     }
 
-    componentWillUnmount(){
-        window.removeEventListener('scroll',this.handleScroll)
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
-    handleScroll = () =>{
-        let ratio = Math.floor(window.scrollY/window.innerHeight)
-        if(ratio!==this.page){
-            this.setState({page:ratio})
+    handleScroll = () => {
+        let ratio = Math.floor(window.scrollY / window.innerHeight)
+        if (ratio !== this.page) {
+            this.setState({ page: ratio })
         }
         console.log(ratio)
         console.log(this.state.page)
     }
 
-    handleClick = e =>{
+    handleClick = e => {
         e.preventDefault()
 
 
@@ -62,33 +62,34 @@ class MovieFeed extends React.Component {
         console.log(`feed:${feed['row_name']}`)
         return (
             <>
-                {feed ? feed.map(elem => {
-                    return (
-                        <Container fluid="true" className="my-3">
-                            <Row className="d-block" onScroll={this.handleScroll}>
-                                <h2 className="text-light category-heading">{elem['row_name']}</h2>
-                                <div className="super">
-                                    <div className="parent">
-                                        {elem['data'] ?
-                                            elem['data'].map(subelem => {
-                                                return (
-                                                    <Card className="shadow m-1 rounded" onClick={this.handleClick}>
-                                                        <Link to={`/titles/${subelem.id}`}><CardImg top src={subelem.images[0].url} alt="" /></Link>
-                                                        <CardBody>
-                                                            <CardTitle className="h6">{subelem.title}</CardTitle>
-                                                        </CardBody>
-                                                    </Card>
-                                                )
-                                            })
-                                            : <img src={loader} />
-                                        }
+                <div className="wallpaper">
+                    {feed ? feed.map(elem => {
+                        return (
+                            <Container fluid={true} className="my-3">
+                                <Row className="d-block" onScroll={this.handleScroll}>
+                                    <h2 className="text-light category-heading">{elem['row_name']}</h2>
+                                    <div className="super">
+                                        <div className="parent">
+                                            {elem['data'] ?
+                                                elem['data'].map(subelem => {
+                                                    return (
+                                                        <Card className="shadow m-1 rounded" onClick={this.handleClick}>
+                                                            <Link to={`/titles/${subelem.id}`}><CardImg top src={subelem.images[0].url} alt="" /></Link>
+                                                            <CardBody>
+                                                                <CardTitle className="h6">{subelem.title}</CardTitle>
+                                                            </CardBody>
+                                                        </Card>
+                                                    )
+                                                })
+                                                : <img src={loader} />
+                                            }
 
+                                        </div>
                                     </div>
-                                </div>
-                            </Row>
-                        </Container>)
-                }) : null}
-
+                                </Row>
+                            </Container>)
+                    }) : null}
+                </div>
             </>
         )
     }
