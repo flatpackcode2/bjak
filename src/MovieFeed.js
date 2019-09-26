@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import './MovieFeed.css';
-import { Link, Route } from 'react-router-dom';
-import Image from "react-graceful-image";
+import { Link } from 'react-router-dom';
 import loader from "./assets/loader.gif";
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col, Container
+    Card, CardImg, CardBody,
+    CardTitle, Row, Container
 } from 'reactstrap';
 
 class MovieFeed extends React.Component {
@@ -29,7 +28,6 @@ class MovieFeed extends React.Component {
                         manualCuration.push(initialFeed[i])
                     }
                 }
-                console.log(manualCuration)
                 this.setState({ feed: manualCuration })
             })
             .catch(error => {
@@ -47,8 +45,6 @@ class MovieFeed extends React.Component {
         if (ratio !== this.page) {
             this.setState({ page: ratio })
         }
-        console.log(ratio)
-        console.log(this.state.page)
     }
 
     handleClick = e => {
@@ -59,7 +55,6 @@ class MovieFeed extends React.Component {
 
     render() {
         const { feed } = this.state
-        console.log(`feed:${feed['row_name']}`)
         return (
             <>
                 <div className="wallpaper">
@@ -81,7 +76,7 @@ class MovieFeed extends React.Component {
                                                         </Card>
                                                     )
                                                 })
-                                                : <img src={loader} />
+                                                : <img src={loader} alt="loader" />
                                             }
 
                                         </div>
@@ -96,8 +91,4 @@ class MovieFeed extends React.Component {
 }
 
 export default MovieFeed;
-
-//Use graceful image loading
-//Use loading icon
-//Use reactstrap
 

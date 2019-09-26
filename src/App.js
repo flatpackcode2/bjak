@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import MovieFeed from './MovieFeed.js';
 import MovieDetail from './MovieDetail.js';
-import { Switch, Link, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Navigation from "./Navigation.js";
 
 function App() {

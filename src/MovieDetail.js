@@ -10,7 +10,6 @@ import clock from "./assets/clock.svg"
 import play from "./assets/play.svg"
 
 import './MovieDetail.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class MovieDetails extends React.Component {
     constructor(props) {
@@ -25,7 +24,6 @@ class MovieDetails extends React.Component {
             .then(response => {
                 let content = response.data.data
                 this.setState({ content: content })
-                console.log(this.state.content)
 
             }).catch(error => {
                 console.log(error)
@@ -41,20 +39,20 @@ class MovieDetails extends React.Component {
                         <Container className="text-light">
                             <Row className="justify-content-center mt-5">
                                 <Col lg={4} md={6} sm={12}>
-                                    <img className="rounded shadow" width="300px" src={content.images[0].url} />
+                                    <img className="rounded shadow" width="300px" src={content.images[0].url} alt="poster"/>
                                 </Col>
                                 <Col lg={8} md={6} sm={12}>
                                     <div>
                                         <h4 className='text-left'>{content.title}</h4>
                                         <br />
-                                        {content.audios.length > 0 ? <h6 className='text-left'><img style={{ height: '1.5rem' }} src={volume} /> {content['audios'].join(', ')}</h6> : null}
-                                        {content.languages.length > 0 ? <h6 className='text-left'><img style={{ height: '1.5rem' }} src={subtitles} /> {content['languages'].join(', ')}</h6> : null}
-                                        <h6 className='text-left'><img style={{ height: '1.5rem' }} src={clock} /> {content.running_time_friendly}</h6>
+                                        {content.audios.length > 0 ? <h6 className='text-left'><img style={{ height: '1.5rem' }} src={volume} alt="audio" /> {content['audios'].join(', ')}</h6> : null}
+                                        {content.languages.length > 0 ? <h6 className='text-left'><img style={{ height: '1.5rem' }} src={subtitles} alt="language"/> {content['languages'].join(', ')}</h6> : null}
+                                        <h6 className='text-left'><img style={{ height: '1.5rem' }} src={clock} alt="running time"/> {content.running_time_friendly}</h6>
                                     </div>
                                     <br />
                                     <div className="d-flex justify-content-flex-start">
 
-                                        <Button color="danger" style={{ alignSelf: 'start' }}><img style={{ height: '1.5rem' }} src={play} /> Watch now</Button>
+                                        <Button color="danger" style={{ alignSelf: 'start' }}><img style={{ height: '1.5rem' }} src={play} alt="play"/> Watch now</Button>
                                     </div>
                                     <hr />
                                     <div>
@@ -65,7 +63,7 @@ class MovieDetails extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                        : <img src={loader} />
+                        : <img src={loader} alt="loader"/>
                 }
             </>
         )
